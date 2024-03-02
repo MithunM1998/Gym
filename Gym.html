@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gym Trainer Website</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f5f0e1; /* Set background color to a warm, inviting tone */
+    }
+
+    header {
+      background-color: #564b46; /* Set header background color to complement brown tones */
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+    }
+
+    main {
+      padding: 20px;
+    }
+
+    .slider-container {
+      width: 100%;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .slider {
+      display: flex;
+      transition: transform 0.5s ease;
+    }
+
+    .slider .slide {
+      width: 100%; /* Adjusted width to fill the container */
+      margin-right: 20px; /* Add spacing between slides */
+    }
+
+    .slider .slide:last-child {
+      margin-right: 0; /* Remove margin for the last slide */
+    }
+
+    .slider .slide img {
+      width: 100%;
+      height: 100%; /* Ensuring the image fills its container */
+      object-fit: cover; /* Ensure the aspect ratio is maintained */
+      border: 1px solid #ddd; /* Add border to images */
+      border-radius: 5px; /* Add border radius */
+    }
+
+    .prev, .next {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      cursor: pointer;
+      font-size: 24px;
+      color: white;
+      background-color: rgba(0, 0, 0, 0.5);
+      padding: 10px;
+    }
+
+    .prev {
+      left: 10px;
+    }
+
+    .next {
+      right: 10px;
+    }
+
+    .contact-info {
+      margin-top: 20px;
+      display: flex;
+      flex-direction: column; /* Display items vertically */
+    }
+
+    .details {
+      display: none;
+      padding: 20px;
+      background-color: #fff; /* Set background color for expanded details */
+      color: #564b46;
+      border-radius: 10px;
+      margin-top: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add box shadow for a card-like effect */
+    }
+
+    .details p {
+      margin: 10px 0; /* Add space between paragraphs */
+    }
+
+    .details h3 {
+      margin-top: 0;
+    }
+
+    .plus-icon-container {
+      display: flex;
+      align-items: center;
+      background-color: #564b46; /* Background color for the container */
+      padding: 10px;
+      border-radius: 5px;
+      margin-bottom: 10px;
+    }
+
+    .plus-icon {
+      cursor: pointer;
+      font-size: 24px;
+      color: white;
+      margin-right: 10px;
+    }
+
+    .plus-icon:hover {
+      background-color: #6b5e5a; /* Change background color on hover */
+    }
+
+    .heading {
+      color: white;
+      font-weight: bold;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background-color: #564b46; /* Set footer background color to complement brown tones */
+      color: #fff;
+      margin-top: 20px;
+    }
+
+    /* Media Query for Mobile Devices */
+    @media only screen and (max-width: 600px) {
+      .details {
+        width: 100%; /* Set full width for mobile devices */
+      }
+    }
+
+    a {
+      color: #564b46; /* Set link color */
+    }
+
+    a:hover {
+      text-decoration: underline; /* Add underline on link hover */
+    }
+
+    /* Background Animations */
+.background-animations {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column; /* Stack the GIFs vertically */
+  justify-content: center; /* Center the GIFs horizontally */
+  align-items: center; /* Center the GIFs vertically */
+  z-index: -1; /* Ensure animations are behind other content */
+  pointer-events: none; /* Allow clicks to pass through to underlying content */
+}
+
+.background-animations img {
+  width: auto; /* Adjust width */
+  height: 100px; /* Adjust height */
+  margin: 10px 0; /* Add margin between the GIFs */
+  opacity: 0.5; /* Set the opacity to make the GIFs lightly visible */
+}
+
+
+
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Welcome to Our Gym</h1>
+  </header>
+
+  <main>
+    <div class="slider-container">
+      <div class="slider">
+        <div class="slide">
+          <img src="C:\Users\Admin\OneDrive\Desktop\Gym\wed.jpg" alt="Image 1">
+        </div>
+        <div class="slide">
+          <img src="C:\Users\Admin\OneDrive\Desktop\Gym\wed2.jpg" alt="Image 2">
+        </div>
+        <div class="slide">
+          <img src="C:\Users\Admin\OneDrive\Desktop\Gym\wed3.jpg" alt="Image 3">
+        </div>
+      </div>
+      <div class="prev" onclick="prevSlide()">&#10094;</div>
+      <div class="next" onclick="nextSlide()">&#10095;</div>
+    </div>
+
+    <div class="contact-info">
+      <div class="plus-icon-container" onclick="toggleDetails('address')">
+        <div class="plus-icon">&#43;</div>
+        <span class="heading">Address</span>
+      </div>
+      <div class="details" id="addressDetails">
+        <h3>Address</h3>
+        <p>123 Gym Street, City, Country</p>
+      </div>
+
+      <div class="plus-icon-container" onclick="toggleDetails('phone')">
+        <div class="plus-icon">&#43;</div>
+        <span class="heading">Phone Number</span>
+      </div>
+      <div class="details" id="phoneDetails">
+          <h3>Phone Number</h3>
+        <p>
+          <a href="tel:+1234567890">+1234567890</a> <!-- Direct phone call link -->
+          <a href="https://wa.me/1234567890"> <!-- WhatsApp link -->
+            <img src="watsapp.jfif" alt="WhatsApp" width="30" height="30"> <!-- WhatsApp icon -->
+          </a>
+	<h6>Tap to chat</h6>
+        </p>
+      </div>
+
+      <div class="plus-icon-container" onclick="toggleDetails('map')">
+        <div class="plus-icon">&#43;</div>
+        <span class="heading">Google Map</span>
+      </div>
+      <div class="details" id="mapDetails">
+        <h3>Google Map</h3>
+        <p><a href="https://www.google.com/maps/place/123+Gym+Street+City+Country" target="_blank">View on Google Maps</a></p>
+      </div>
+    </div>
+
+    <!-- Background Animations -->
+    <div class="background-animations">
+      <!-- You can add multiple elements for different animations -->
+      <img src="lifting_dumbells.gif" alt="Lifting Dumbbells">
+      <img src="lifting_bars.gif" alt="Lifting Bars">
+<img src="dumbel_flys.gif" alt="dumbelflys">
+  <img src="inclined_dumbel.gif" alt="inclineddumbel">
+      <!-- Add more images for other animations as needed -->
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2024 Gym Trainer Website</p>
+  </footer>
+
+  <script>
+    function toggleDetails(section) {
+      const details = document.getElementById(section + 'Details');
+      if (details.style.display === 'none' || details.style.display === '') {
+        details.style.display = 'block';
+      } else {
+        details.style.display = 'none';
+      }
+    }
+
+    const slider = document.querySelector('.slider');
+    const slides = document.querySelectorAll('.slider .slide');
+    const slideWidth = slides[0].offsetWidth;
+    let counter = 0;
+
+    function prevSlide() {
+      counter--;
+      if (counter < 0) {
+        counter = slides.length - 1;
+      }
+      slider.style.transform = `translateX(${-slideWidth * counter}px)`;
+    }
+
+    function nextSlide() {
+      counter++;
+      if (counter === slides.length) {
+        counter = 0;
+      }
+      slider.style.transform = `translateX(${-slideWidth * counter}px)`;
+    }
+
+    setInterval(nextSlide, 5000);
+  </script>
+</body>
+</html>

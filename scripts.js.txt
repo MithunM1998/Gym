@@ -1,0 +1,18 @@
+// scripts.js
+// Initialize Google Maps
+function initMap() {
+  const location = { lat: 123.456, lng: -123.456 }; // Replace with your gym's coordinates
+  const map = new google.maps.Map(document.getElementById("map"), {
+    zoom: 15,
+    center: location,
+  });
+  const marker = new google.maps.Marker({
+    position: location,
+    map: map,
+  });
+
+  // Redirect to Google Maps when map is clicked
+  document.getElementById("map").addEventListener("click", function() {
+    window.location.href = `https://www.google.com/maps/search/?api=1&query=${location.lat},${location.lng}`;
+  });
+}
